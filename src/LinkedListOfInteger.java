@@ -4,15 +4,15 @@ public class LinkedListOfInteger {
     // Classe interna Node
     private class Node {
 
-        public Integer element;
+        public char element;
         public Node next;
 
-        public Node(Integer element) {
+        public Node(char element) {
             this.element = element;
             next = null;
         }
         
-        public Node(Integer element, Node next) {
+        public Node(char element, Node next) {
             this.element = element;
             this.next = next;
         }        
@@ -39,7 +39,7 @@ public class LinkedListOfInteger {
      *
      * @param element elemento a ser adicionado ao final da lista
      */
-    public void add(Integer element) {
+    public void add(char element) {
         Node aux = new Node(element);
         if (head == null) {
             head = aux;
@@ -57,7 +57,7 @@ public class LinkedListOfInteger {
      * @param element elemento a ser inserido
      * @throws IndexOutOfBoundsException se (index < 0 || index > size())
      */
-    public void add(int index, Integer element) {
+    public void add(int index, char element) {
         if (index < 0 || index > size()) {
             throw new IndexOutOfBoundsException();
         }
@@ -90,7 +90,7 @@ public class LinkedListOfInteger {
      * @return o elemento da posicao especificada
      * @throws IndexOutOfBoundsException se (index < 0 || index >= size())
      */
-    public Integer get(int index) {
+    public char get(int index) {
         if ((index < 0) || (index >= count)) {
             throw new IndexOutOfBoundsException();
         }
@@ -112,7 +112,7 @@ public class LinkedListOfInteger {
      * @return o elemento armazenado anteriormente na posicao da lista
      * @throws IndexOutOfBoundsException se (index < 0 || index >= size())
      */
-    public Integer set(int index, Integer element) {
+    public char set(int index, char element) {
         if ((index < 0) || (index >= count)) {
             throw new IndexOutOfBoundsException();
         }
@@ -120,7 +120,7 @@ public class LinkedListOfInteger {
         for (int i = 0; i < index; i++) {
             aux = aux.next;
         }
-        Integer tmp = aux.element;
+        char tmp = aux.element;
         aux.element = element;
         return tmp;
 
@@ -132,15 +132,15 @@ public class LinkedListOfInteger {
      * @param element o elemento a ser removido
      * @return true se a lista contem o elemento especificado
      */
-    public boolean remove(Integer element) {
-        if (element == null) {
+    public boolean remove(char element) {
+        if (Character.isWhitespace(element)) {
             return false;
         }
         if (count == 0) {
             return false;
         }
 
-        if (head.element.equals(element)) { // remocao do primeiro
+        if (head.element == element) { // remocao do primeiro
             head = head.next;
             if (count == 1) { // se havia so um elemento na lista
                 tail = null;
@@ -153,7 +153,7 @@ public class LinkedListOfInteger {
         Node aux = head.next;
 
         for (int i = 1; i < count; i++) {
-            if (aux.element.equals(element)) {
+            if (aux.element == element) {
                 if (aux == tail) { // remocao do ultimo
                     tail = ant;
                     tail.next = null;
@@ -204,7 +204,7 @@ public class LinkedListOfInteger {
      * @return o elemento que foi removido da lista
      * @throws IndexOutOfBoundsException se (index < 0 || index >= size())
      */
-    public Integer removeByIndex(int index) {
+    public char removeByIndex(int index) {
         if (index < 0 || index >= count) {
             throw new IndexOutOfBoundsException();
         }
@@ -224,7 +224,7 @@ public class LinkedListOfInteger {
             aux = aux.next;
             c++;
         }
-        Integer element = aux.next.element;
+        char element = aux.next.element;
         if (tail == aux.next) {
             tail = aux;
         }
@@ -245,7 +245,7 @@ public class LinkedListOfInteger {
         int index = 0;
         Node aux = head;
         while (aux != null) {
-            if (aux.element.equals(element)) {
+            if (aux.element == element) {
                 return (index);
             }
             aux = aux.next;
@@ -263,7 +263,7 @@ public class LinkedListOfInteger {
     public boolean contains(Integer element) {
         Node aux = head;
         while (aux != null) {
-            if (aux.element.equals(element)) {
+            if (aux.element == element) {
                 return (true);
             }
             aux = aux.next;
@@ -278,7 +278,7 @@ public class LinkedListOfInteger {
         Node aux = head;
 
         while (aux != null) {
-            s.append(aux.element.toString());
+            s.append(aux.element);
             s.append("\n");
             aux = aux.next;
         }
