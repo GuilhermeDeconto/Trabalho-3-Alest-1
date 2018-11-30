@@ -10,9 +10,11 @@ public class GeneralTreeOfInteger {
         public Node father;
         public char element;
         public LinkedList<Node> subtrees;
+        public String words;
 
-        public Node(char element) {
+        public Node(char element, String words) {
             father = null;
+            this.words = words;
             this.element = element;
             subtrees = new LinkedList<>();
         }
@@ -131,8 +133,8 @@ public class GeneralTreeOfInteger {
         return res;
     }
 
-    public boolean add(char element, char father) {
-        Node n = new Node(element);
+    public boolean add(char element, char father, String words) {
+        Node n = new Node(element, words);
         Node nAux = null;
         boolean res = false;
         if (count == 0) {   // Insere na raiz
