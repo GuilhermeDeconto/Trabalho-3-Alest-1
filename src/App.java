@@ -5,10 +5,19 @@ import java.nio.file.Paths;
 public class App {
 
     public static void main(String args[]) {
-    	File arq = new File(args[0]);
+    	//File arq = new File(args[0]);
         GeneralTreeOfInteger arvore = new GeneralTreeOfInteger();
-	    FileRead read = new FileRead();
-	    read.fileReader(arq,arvore);
+        arvore.add('X', 'E');
+	    arvore.add('N', 'E');
+	    arvore.add('U', 'X');
+	    arvore.add('A', 'X');
+	    arvore.add('F', 'A');
+	    arvore.add('M', 'A');
+	    LinkedListOfInteger lista = arvore.positionsPos();
+	    System.out.println(lista.toString());
+        //arvore.add('B', );
+	    //FileRead read = new FileRead();
+	    //read.fileReader(arq,arvore);
 	    //read.fileReader(args[0],arvore);
         /*
         arvore.add(0,null);

@@ -6,15 +6,17 @@ public class LinkedListOfInteger {
 
         public char element;
         public Node next;
+        public String words;
 
         public Node(char element) {
             this.element = element;
             next = null;
         }
         
-        public Node(char element, Node next) {
+        public Node(char element, String words) {
             this.element = element;
-            this.next = next;
+            next = null;
+            this.words = words;
         }        
     }
 
@@ -49,6 +51,17 @@ public class LinkedListOfInteger {
         tail = aux;
         count++;
     }
+
+	public void add(char element,String words) {
+		Node aux = new Node(element, words);
+		if (head == null) {
+			head = aux;
+		} else {
+			tail.next = aux;
+		}
+		tail = aux;
+		count++;
+	}
 
     /**
      * Insere um elemento em uma determinada posicao da lista
@@ -133,9 +146,6 @@ public class LinkedListOfInteger {
      * @return true se a lista contem o elemento especificado
      */
     public boolean remove(char element) {
-        if (Character.isWhitespace(element)) {
-            return false;
-        }
         if (count == 0) {
             return false;
         }
@@ -241,7 +251,7 @@ public class LinkedListOfInteger {
      * @return o indice da primeira ocorrencia do elemento na lista, ou -1 se a
      * lista nao contem o elemento
      */
-    public int indexOf(Integer element) {
+    public int indexOf(char element) {
         int index = 0;
         Node aux = head;
         while (aux != null) {
@@ -260,7 +270,7 @@ public class LinkedListOfInteger {
      * @param element o elemento a ser testado
      * @return true se a lista contem o elemento especificado
      */
-    public boolean contains(Integer element) {
+    public boolean contains(char element) {
         Node aux = head;
         while (aux != null) {
             if (aux.element == element) {
@@ -280,6 +290,9 @@ public class LinkedListOfInteger {
         while (aux != null) {
             s.append(aux.element);
             s.append("\n");
+            //if (aux.words!= null){
+            //s.append(aux.words);
+            //}
             aux = aux.next;
         }
 
