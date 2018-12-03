@@ -3,6 +3,11 @@ import java.util.LinkedList;
 import java.util.NoSuchElementException;
 
 public class GeneralTreeOfInteger {
+    /**
+     * Trie[] children;
+       boolean word;
+       char c;
+     */
 
     // Classe interna Node
     private class Node {
@@ -156,6 +161,41 @@ public class GeneralTreeOfInteger {
         }        
         return res;
     }
+
+    /**
+     * public void add(String s) {
+     if (s.isEmpty()) {
+     this.word = true;
+     return;
+     }
+     char letter = s.charAt(0);
+     int index = letter - 'a'; // a
+
+     if (this.children[index] == null) {
+     this.children[index] = new Trie();
+     }
+     this.children[index]add(s.substring(1));
+     }
+
+
+
+     public boolean isWord(String s) {
+     if (s.isEmpty()) {
+     return this.word;
+     }
+
+     char letter = s.charAt(0);
+     int index = letter - 'a';
+
+     if (this.children[index] == null) {
+     return false;
+     }
+     return this.children[index].isWord(s.substring(1));
+     }
+     *
+     *
+     *
+     */
 
     public boolean removeBranch(char element) {
         Node nAux = null;
