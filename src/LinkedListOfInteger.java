@@ -52,17 +52,6 @@ public class LinkedListOfInteger {
         count++;
     }
 
-	public void add(char element,String words) {
-		Node aux = new Node(element, words);
-		if (head == null) {
-			head = aux;
-		} else {
-			tail.next = aux;
-		}
-		tail = aux;
-		count++;
-	}
-
     /**
      * Insere um elemento em uma determinada posicao da lista
      *

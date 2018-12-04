@@ -1,43 +1,31 @@
 import java.io.File;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 public class App {
 
     public static void main(String args[]) {
-    	//File arq = new File(args[0]);
-        GeneralTreeOfInteger arvore = new GeneralTreeOfInteger();
-        arvore.add('X', 'E');
-	    arvore.add('N', 'E');
-	    arvore.add('U', 'X');
-	    arvore.add('A', 'X');
-	    arvore.add('F', 'A');
-	    arvore.add('M', 'A');
-	    System.out.println("Elementos da arvore:"+arvore.positionsPre());
-	    //LinkedListOfInteger lista = arvore.positionsPos();
-	    //System.out.println(lista.toString());
-        //arvore.add('B', );
-	    //FileRead read = new FileRead();
-	    //read.fileReader(arq,arvore);
-	    //read.fileReader(args[0],arvore);
-        /*
-        arvore.add(0,null);
-        arvore.add(1,0);
-        arvore.add(2,0);
-        arvore.add(3,0);
-        arvore.add(4,1);
-        arvore.add(5,2);
-        arvore.add(6,2);
-        arvore.add(7,2);
-        */
-        //arvore.add('B','A',"");
-	    //arvore.add('C','B', "UAHUEA");
-        //System.out.println("Elementos da arvore: caminhamento em largura:");
-        //System.out.println(arvore.positionsWidth());
-        
-        //System.out.println("Elementos da arvore: caminhamento pre:");
-        //System.out.println(arvore.positionsPre());
+    	File arq = new File(args[0]);
+        GeneralTreeOfChar arvore = new GeneralTreeOfChar();
+	    FileRead read = new FileRead();
+	    read.fileReader(arq,arvore);
+	    //System.out.println(arvore.searchAux("Br"));
+	    System.out.println(arvore.search("Fernanda"));
+	    System.out.println(arvore.searchWords("Breno"));
+	    System.out.println(arvore.searchWords("Pedro"));
+	    /*
+
+        arvore.insert("joana","GOSTOSA");
+        arvore.insert("gustavo","TOP");
+        arvore.insert("lucas","ARMAZEM");
+        System.out.println("Primeiro boolean: "+arvore.search("gustavo"));
+	    System.out.println("Segundo boolean: "+arvore.search("lucas"));
+	    System.out.println("Terceiro boolean: "+arvore.search("joana"));
+	    System.out.println("Quarto boolean: "+arvore.searchNode("gus"));
+	    System.out.println(arvore.count);
+	    System.out.println("Joana é: "+av);
+*/
+
     }
+
 
  
 
