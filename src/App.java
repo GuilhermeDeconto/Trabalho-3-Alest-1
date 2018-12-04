@@ -13,8 +13,9 @@ public class App {
 	    arvore.add('A', 'X');
 	    arvore.add('F', 'A');
 	    arvore.add('M', 'A');
-	    LinkedListOfInteger lista = arvore.positionsPos();
-	    System.out.println(lista.toString());
+	    System.out.println("Elementos da arvore:"+arvore.positionsPre());
+	    //LinkedListOfInteger lista = arvore.positionsPos();
+	    //System.out.println(lista.toString());
         //arvore.add('B', );
 	    //FileRead read = new FileRead();
 	    //read.fileReader(arq,arvore);

@@ -8,17 +8,17 @@ public class GeneralTreeOfInteger {
 	private class Node {
 
 		public Node father;
-		public char element;
+		public Character element;
 		public LinkedList<Node> subtrees;
 		public String words;
 
-		public Node(char element) {
+		public Node(Character element) {
 			father = null;
 			this.element = element;
 			subtrees = new LinkedList<>();
 		}
 
-		public Node(char element,String words) {
+		public Node(Character element,String words) {
 			father = null;
 			this.words = words;
 			this.element = element;
@@ -49,7 +49,7 @@ public class GeneralTreeOfInteger {
 	}
 
 	// Atributos
-	private Node root = null;
+	private Node root;
 	private int count;
 
 	// Metodos
@@ -87,8 +87,10 @@ public class GeneralTreeOfInteger {
 		return (count == 0);
 	}
 
-	public int size() {
-		return count;
+	public int size() { return count; }
+
+	public void setRoot() {
+		root = null;
 	}
 
 	public void clear() {
@@ -123,10 +125,10 @@ public class GeneralTreeOfInteger {
 		return false;
 	}
 
-	private Node searchNodeRef(char element, Node target) {
+	private Node searchNodeRef(Character element, Node target) {
 		Node res = null;
 		if (target != null) {
-			if (element == target.element) {
+			if (element.equals(target.element)) {
 				res = target;
 			} else {
 				Node aux = null;
@@ -141,25 +143,49 @@ public class GeneralTreeOfInteger {
 		return res;
 	}
 
-	public void add(char element, char father) {
+	public LinkedList<Node> getChildren(){
+		return root.subtrees;
+	}
+	public boolean verifyChildren(Node n, Character element){
+		for (int i = 0; i < n.getSubtreesSize(); i++){
+			if (element == n.getSubtree(i).element){
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public boolean verifyNodeChildren(Node n, Character element){
+		return true;
+	}
+
+	public boolean add(Character element, Character father) {
+		if (count > 0) {setRoot();}
 		Node n = new Node(element);
 		Node nAux = searchNodeRef(father, root);
-		if (nAux != null) {
-			nAux.addSubtree(n);
-			n.father = nAux;
+		boolean res = false;
+		if (!verifyChildren(nAux, element)) { // SE O FATHER NÃO TEM ESSE FILHO (ELEMENT)
+			nAux.addSubtree(n);                //ANA
+			n.father = nAux;                   //ANDRE
+			res = true;
 			count++;
 		}
-}
+		return res;
 
-	public void addWithWords(char element, char father, String words) {
-		Node nAux;
-		Node n = new Node(element, words);
-		nAux = searchNodeRef(father, root);
-		if (nAux != null) {
-			nAux.addSubtree(n);
-			n.father = nAux;
+	}
+
+	public boolean addWithWords(char element, char father, String words) {
+		if (count > 0) {setRoot();}
+		Node n = new Node(element,words);
+		Node nAux = searchNodeRef(father, root);
+		boolean res = false;
+		if (!verifyChildren(nAux, element)) { // SE O FATHER NÃO TEM ESSE FILHO (ELEMENT)
+			nAux.addSubtree(n);                //ANA
+			n.father = nAux;                   //ANDRE
+			res = true;
 			count++;
 		}
+		return res;
 	}
 
 	public boolean removeBranch(char element) {

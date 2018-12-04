@@ -2,6 +2,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.StringTokenizer;
 
 public class FileRead {
 
@@ -23,7 +24,19 @@ public class FileRead {
 			System.out.println("FILE READING ERROR: " + e);
 		}
 	}
-	private void populateTree(String line, GeneralTreeOfInteger tree){
+	private void populateTree(String line, GeneralTreeOfInteger tree) {
+
 		//ADICIONAR OS DADOS DO ARQUIVO NA ARVORE...
+		char aux, ling;
+		StringTokenizer fort = new StringTokenizer(line, ";", true);
+		int cont = 0;
+		//While que executa enquanto tiver um elemento após o atual
+		while (fort.hasMoreTokens()) {
+			//pego o próximo elemento
+			String actualToken = fort.nextToken();
+			aux = actualToken.charAt(cont);
+			ling = actualToken.charAt(cont+1);
+			cont++;
+		}
 	}
 }
