@@ -68,7 +68,9 @@ public class GeneralTreeOfChar {
 
 	public LinkedListOfInteger childrenNode(String s) {
 		TrieNode p = searchNode(s);
+		return null;
 	}
+
 	public String searchWords(String s) {
 		TrieNode p = searchNode(s);
 		if (p != null) {
